@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name UniSP-pfc-LT1249)(type KiCad)(uri "$(KIPRJMOD)/UniSP-pfc-LT1249.pretty")(options "")(descr ""))
+)
