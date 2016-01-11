@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name smps)(type KiCad)(uri /home/raiden00/smps/project/kciad/v3/mod/smps.pretty)(options "")(descr ""))
+)
