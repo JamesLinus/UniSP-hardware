@@ -3,3 +3,8 @@
 *.bak
 *.kicad_pcb-bak
 /*/shapes3D
+/UniSP-bridge-driver-PSFB/UniSP-bridge-driver-PSFB.kicad_pcb
+/UniSP-driver/UniSP-driver.kicad_pcb
+/UniSP-mainboard/UniSP-mainboard.kicad_pcb
+/UniSP-pfc-bl/UniSP-pfc-bl.kicad_pcb
+/UniSP-pfc-LT1249/UniSP-pfc-LT1249.kicad_pcb
