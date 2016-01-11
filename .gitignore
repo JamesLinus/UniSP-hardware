@@ -2,6 +2,7 @@
 *#
 *.bak
 *.kicad_pcb-bak
+*.org
 /*/shapes3D
 /UniSP-bridge-driver-PSFB/UniSP-bridge-driver-PSFB.kicad_pcb
 /UniSP-driver/UniSP-driver.kicad_pcb
