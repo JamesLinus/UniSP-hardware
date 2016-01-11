@@ -1,0 +1,52 @@
+@startuml
+
+title UniSP feedback signals diagram
+
+interface "AC line" as AC
+interface "Output module" as Output
+
+package "PFC board"{
+
+        [EMI filter]
+        [PFC]
+        [Aux PS]
+        [PFC driver]
+}
+
+package "Mainboard"{
+
+package "Driver"{
+
+        [Driver]
+}
+
+[Full bridge]
+        [Trafo]
+        [Rectifier]
+        [LC filter]
+        [Output interface]
+}
+
+
+
+AC -[#red]> [EMI filter]
+[EMI filter] -[#red]> [PFC]
+[PFC] --[#red]> [Aux PS]
+[EMI filter] ..> [PFC driver] : Input voltage
+[PFC] ..> [PFC driver] : PFC current
+[Aux PS] ..> [PFC driver] : Aux PS state
+
+[PFC] -[#red]> [Full bridge]
+[Full bridge] -[#red]> [Trafo]
+[Trafo] -[#red]> [Rectifier]
+[Rectifier] -[#red]> [LC filter]
+[LC filter] -[#red]> [Output interface]
+
+[Driver] <.. [Trafo] : Primary current
+[Driver] <.. [LC filter] : Output voltage
+[Driver] <.. [Output interface] : 2xV + 2xI
+
+[Output interface] -> Output
+
+
+@enduml

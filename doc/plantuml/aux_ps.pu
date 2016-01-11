@@ -1,0 +1,48 @@
+@startuml
+
+title Unisp auxiliary power supply distribution diagram
+
+interface "Output module" as Output
+
+package "PFC board"{
+
+        [PFC driver]
+        [Aux PS]
+}
+
+note left of [PFC driver]
+     PFC section supply from
+     its own low volage source
+end note
+
+note top of [Aux PS]
+     15V ?
+end note
+
+package "Mainboard"{
+
+        package "Full bridge driver"{
+
+                [Full bridge driver]
+        }
+
+        package "Rectifier driver"{
+
+                [Rectifier driver]
+        }
+
+        package "Driver"{
+
+                [Driver]
+        }
+
+        [Output interface]
+}
+
+[Aux PS] -> [Driver]
+[Aux PS] -> [Full bridge driver]
+[Aux PS] -> [Rectifier driver]
+[Aux PS] -> [Output interface]
+[Output interface] -> Output
+
+@enduml

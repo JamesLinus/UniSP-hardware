@@ -1,0 +1,73 @@
+@startuml
+
+title UniSP hardware concept diagram
+
+interface "AC line" as AC
+interface "Output module" as Output
+
+package "PFC board"{
+
+        [EMI filter]
+        [PFC]
+        [Aux PS]
+        [PFC driver]
+}
+
+package "Mainboard"{
+
+package "Full bridge driver"{
+
+        [Full bridge driver]
+}
+
+package "Rectifier driver"{
+
+        [Rectifier driver]
+}
+
+package "Driver"{
+
+        [Driver]
+}
+
+[Full bridge]
+        [Trafo]
+        [Rectifier]
+        [LC filter]
+        [Output interface]
+}
+
+
+
+AC -[#red]> [EMI filter]
+[EMI filter] -[#red]> [PFC]
+[PFC] --[#red]> [Aux PS]
+[PFC driver] --> [PFC] : PWM
+
+[PFC] -[#red]> [Full bridge]
+[Full bridge] -[#red]> [Trafo]
+[Trafo] -[#orange]> [Rectifier]
+[Rectifier] -[#orange]> [LC filter]
+[LC filter] -[#orange]> [Output interface]
+
+[Full bridge driver] --> [Full bridge]
+[Rectifier driver] --> [Rectifier]
+
+[Driver] -> [PFC driver]
+[PFC driver] -> [Driver] : UART
+
+[Driver] --> [Rectifier driver] : PWM
+[Driver] --> [Full bridge driver] : PWM
+
+[Driver] --> [Output interface] : PWM
+
+[Output interface] -> Output
+
+
+/'
+[Aux PS] -> [Driver]
+[Aux PS] -> [Full bridge driver]
+[Aux PS] -> [Rectifier driver]
+'/
+
+@enduml
